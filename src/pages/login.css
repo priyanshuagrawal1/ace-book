@@ -1,0 +1,212 @@
+:root{
+    color:black
+}
+
+.body-container{
+    background-color: blue !important;
+}
+
+header{
+    color: black;
+}
+.container {
+    position: relative;
+    top: 15%;
+    left: 20%;
+    right: 20%;
+    aspect-ratio: 1;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.errorFields {
+    grid-gap: 10px !important;
+}
+.InputFields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+        grid-gap: 20px;
+    color: black;
+}
+
+.termsError {
+    justify-content: flex-start;
+}
+.line {
+    width: 100%;
+    height: 0.11px;
+    background-color: rgb(179, 179, 179);
+    box-shadow: 0 1px 8px rgba(92, 92, 92, 0.2);
+    margin: 10px 0px;
+}
+
+label {
+    font-size: 18px;
+}
+
+* {
+    margin: 0px;
+    padding: 0;
+}
+
+
+
+button:disabled,
+button[disabled] {
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
+}
+button {
+    cursor: pointer;
+}
+
+
+.subtitle {
+    font-family: NotoSans;
+        font-size: 12px;
+        color: #5e5e5e;
+}
+.title{
+        color: black;
+}
+h2 {
+    font-family: NotoSans;
+        font-weight: 800;
+}
+
+label {
+    font-family: NotoSans;
+        font-weight: 600;
+        font-size: 13px;
+        display: inline-block;
+}
+
+a {
+        font-family: NotoSans;
+            font-weight: 600;
+}
+button {
+    font-family: NotoSans;
+    font-weight: 400;
+}
+
+.login__signup {
+    font-family: NotoSans;
+        font-weight: 400;
+        color: #5e5e5e;
+        font-size: 13px;
+}
+
+.login__button {
+    color: white;
+    background-color: #676767;
+    border: none;
+    font-size: 13px;
+    padding: 6px 12px;
+    border-radius: 6px;
+}
+
+hr {
+    margin: 10px;
+}
+
+.header {
+    padding: 10px 0px 0px 20px;
+    text-align: left;
+    background: #fefffe;
+    position: absolute;
+    box-shadow: 0 1px 1px rgba(92, 92, 92, 0.2);
+    font-family: dirtyBoy;
+    font-size: 20px;
+    height: 5%;
+    width: 100%;
+    border-radius: 20px 0px 0px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.left {
+    /* background-image: linear-gradient(to top right, #571058, #8d328d); */
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 50%;
+    background-color: #f8f9fa;
+    border-radius: 40px 0px 0px 0;
+}
+
+@font-face {
+    font-family: Branding;
+    src: url("../../fonts/Branding_Light_Italic.otf") format("opentype");
+}
+@font-face {
+    font-family: dirtyBoy;
+    src: url("../../fonts/DirtyBoy.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: goldencoast;
+    src: url("../../fonts/goldencoast.otf") format("opentype");
+}
+
+@font-face {
+    font-family: GERALDINE;
+    src: url("../../fonts/Geraldine.ttf") format("trueType");
+}
+
+@font-face {
+    font-family: sunnySpells;
+    src: url("../../fonts/Sunnyspells.otf") format("opentype");
+}
+
+@font-face {
+    font-family: Millenia;
+    src: url("../../fonts/Millenia.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: TheGlobe;
+    src: url("../../fonts/TheGlobe.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: Majestic;
+    src: url("../../fonts/Majestic.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: CandyCane;
+    src: url("../../fonts/CandyCane.ttf") format("truetype");
+}
+@font-face {
+    font-family: NotoSans;
+    font-weight: 300;
+    src: url("../../fonts/NotoSans-Light.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: NotoSans;
+    font-weight: 400;
+    src: url("../../fonts/NotoSans-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: NotoSans;
+    font-weight: 500;
+    src: url("../../fonts/NotoSans-Medium.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: NotoSans;
+    font-weight: 600;
+    src: url("../../fonts/NotoSans-SemiBold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: NotoSans;
+    font-weight: 800;
+    src: url("../../fonts/NotoSans-ExtraBold.ttf") format("truetype");
+}

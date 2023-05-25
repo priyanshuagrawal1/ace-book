@@ -1,0 +1,152 @@
+.right {
+    background-image: linear-gradient(to top right, #313131, #b0b0b0);
+    position: absolute;
+    right: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    width: 50%;
+}
+
+
+.selected {
+    width: 400px;
+    z-index: 3;
+    transition: 300ms;
+    position: relative;
+    top: 150px;
+    left: 150px;
+}
+
+
+.backImages {
+    display: none;
+}
+
+.shadow {
+    position: absolute;
+    top: 138px;
+    left: 177px;
+    width: 345px;
+    height: 30px;
+    background-color: #946296;
+    z-index: 2;
+    border-radius: 10px 10px 0 0;
+
+}
+
+.shadow2 {
+    position: absolute;
+    top: 130px;
+    left: 195px;
+    width: 310px;
+    height: 50px;
+    background-color: #884589;
+    z-index: 1;
+    border-radius: 10px 10px 0 0;
+}
+
+.rightButton {
+    position: absolute;
+    bottom: 50px;
+    right: 20px;
+    border: none;
+    color: #571058;
+    background-color: "white";
+    font-size: 25px;
+    height: 40px;
+    aspect-ratio: 1;
+    border-radius: 100%;
+}
+
+.heading {
+    position: absolute;
+    top: 70%;
+    left: 32%;
+    font-weight: 400;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+}
+
+.para {
+    position: absolute;
+    top: 78%;
+    left: 20%;
+    font-size: 13px;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    max-width: 60ch;
+    font-family: 'NotoSans';
+}
+
+.navigation {
+    display: flex;
+    padding-right: 20px;
+    position: absolute;
+    bottom: 60px;
+    left: 340px;
+}
+
+.dot {
+    width: 9px;
+    height: 9px;
+    background-color: white;
+    opacity: 0.5;
+    border-radius: 50%;
+    margin: 0px 3px;
+}
+
+.selectedDot {
+    position: relative;
+    width: 13px;
+    height: 13px;
+    bottom: 2px;
+    margin: 0px 3px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.leftButton {
+    position: absolute;
+    bottom: 50px;
+    left: 20px;
+    border: none;
+    height: 40px;
+    color: #571058;
+    font-size: 25px;
+    background-color: "white";
+    aspect-ratio: 1;
+    border-radius: 100%;
+}
+
+.fade {
+    opacity: 0;
+    transform: translate(100px);
+}
+
+.fadeLeft {
+    opacity: 0;
+    transform: translate(-100px);
+}
+
+.my-element-enter {
+    opacity: 0;
+    transform: scale(0.2) translateX(0px, 100px);
+}
+
+.my-element-enter-active {
+    opacity: 1;
+    transform: translateX(0px);
+    transition: opacity 300ms, transform 300ms;
+}
+
+.my-element-exit {
+    opacity: 1;
+}
+
+.my-element-exit-active {
+    opacity: 0;
+    transform: translate(500px);
+    transition: opacity 400ms, transform 400ms;
+}

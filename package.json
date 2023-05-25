@@ -10,14 +10,29 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.0",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.13.2",
+    "@rsuite/icons": "^1.0.2",
+    "@types/react-easy-crop": "^2.0.0",
+    "canvas": "^2.11.2",
+    "data-uri-to-buffer": "^5.0.1",
+    "dotenv": "^16.0.3",
     "firebase": "^9.22.0",
+    "firebase-admin": "^11.8.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.8.0"
+    "react-easy-crop": "^4.7.4",
+    "react-event-observer": "^0.5.11",
+    "react-icons": "^4.8.0",
+    "react-image-crop": "^10.0.11",
+    "react-router-dom": "^6.11.2",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
+    "@types/uuid": "^9.0.1",
     "@typescript-eslint/eslint-plugin": "^5.57.1",
     "@typescript-eslint/parser": "^5.57.1",
     "@vitejs/plugin-react-swc": "^3.0.0",

@@ -1,12 +1,19 @@
 
+import { Route, Routes } from 'react-router-dom'
 import './App.css'
-import Posts from '../components/posts'
+import { Login } from './login'
+import FeedPage from './feedPage'
+import { Signup } from './signup'
 
 function App() {
-
+  console.log("here")
   return (
     <>
-      <Posts/>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/welcome" element={<FeedPage />} />
+        <Route path="/signup" element={<Signup />} />
+      </Routes>
     </>
   )
 }

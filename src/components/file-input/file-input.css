@@ -1,0 +1,33 @@
+.drag-images {
+    font-size: 100px;
+    padding: 15px;
+}
+
+.upload-button {
+    background-color: #0195f7;
+    height: 35px;
+    padding: 0px 10px;
+}
+
+.upload-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.upload-popup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* flex-grow: 1; */
+}
+.uploaded-image {
+    width: 500px;
+    height: 500px;
+}
