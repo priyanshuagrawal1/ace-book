@@ -8,7 +8,7 @@ import Right from './right'
 import { Link } from 'react-router-dom'
 import Checkbox from '../components/checkbox';
 import Input from '../components/input';
-import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { doc, setDoc } from 'firebase/firestore';
 interface FormValues {
     email: string;
     password: string;
@@ -85,7 +85,6 @@ export const Signup = () => {
         try {
             await createUserWithEmailAndPassword(auth, formValues.email, formValues.password).then(async (user) => {
                 if (user.user) {
-                    console.log(user.user, "user.user")
                     await updateProfile(user.user, { displayName: formValues.name })
                     await setDoc(doc(db, "users", user.user.uid), {
                         displayName: formValues.name,
@@ -103,7 +102,6 @@ export const Signup = () => {
     }
 
     useEffect(() => {
-        console.log("terms changed")
         if (terms) {
             setFormErrors(formErrors => ({ ...formErrors, terms: "" }));
         }
@@ -142,7 +140,6 @@ export const Signup = () => {
     useEffect(() => {
         async function signup() {
             onAuthStateChanged(auth, async (currentUser) => {
-                console.log(formValues,"form values")
                 setUser(currentUser);
             });
         }

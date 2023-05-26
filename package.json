@@ -12,6 +12,8 @@
   "dependencies": {
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
+    "@firebase/firestore": "^3.12.0",
+    "@firebase/firestore-types": "^2.5.1",
     "@mui/material": "^5.13.2",
     "@rsuite/icons": "^1.0.2",
     "@types/react-easy-crop": "^2.0.0",
@@ -26,6 +28,7 @@
     "react-event-observer": "^0.5.11",
     "react-icons": "^4.8.0",
     "react-image-crop": "^10.0.11",
+    "react-image-file-resizer": "^0.4.8",
     "react-router-dom": "^6.11.2",
     "uuid": "^9.0.0"
   },

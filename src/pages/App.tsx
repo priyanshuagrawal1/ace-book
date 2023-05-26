@@ -6,7 +6,7 @@ import FeedPage from './feedPage'
 import { Signup } from './signup'
 
 function App() {
-  console.log("here")
+
   return (
     <>
       <Routes>

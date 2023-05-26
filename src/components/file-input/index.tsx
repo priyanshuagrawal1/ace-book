@@ -13,18 +13,21 @@ const FileInput: React.FC<MyComponentProps> = (props: MyComponentProps) => {
     const [imageSrc, setImageSrc] = useState<string | null>(null);
     const [croppedImage, setCroppedImage] = useState<string>("");
     const [needsCrop, setNeedsCrop] = useState<boolean>(true);
+    const readFile = (file: File) => {
+        const reader = new FileReader();
+        reader.onload = () => {
+            if (typeof reader.result === 'string') {
+                props.setImageSrc(reader.result);
+                setImageSrc(reader.result);
+            }
+        };
+        reader.readAsDataURL(file);
+        props.setStage(1)
+    }
     const handleFileInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files && event.target.files[0];
         if (file) {
-            // Read the file as a data URL
-            const reader = new FileReader();
-            reader.onload = () => {
-                if (typeof reader.result === 'string') {
-                    props.setImageSrc(reader.result);
-                    setImageSrc(reader.result);
-                }
-            };
-            reader.readAsDataURL(file);
+            readFile(file)
         }
     };
     function handleDragOver(event: any) {
@@ -33,24 +36,16 @@ const FileInput: React.FC<MyComponentProps> = (props: MyComponentProps) => {
     const handleClick = () => {
         fileInputRef.current?.click();
     };
+
     function handleDrop(event: any) {
         event.preventDefault();
         setNeedsCrop(true);
         const file = event.dataTransfer.files[0];
-
-        // for (let i = 0; i < files.length; i++) {
-            // const file = files[i];
             if (file) {
-                const reader = new FileReader();
-                reader.onload = () => {
-                    props.setImageSrc(reader.result as string);
-                    setImageSrc(reader.result as string);
-                };
-                reader.readAsDataURL(file);
-                props.setStage(1)
+                readFile(file)
             }
-        // }
     }
+
     useEffect(() => { props.setImageSrc(croppedImage) }, [croppedImage])
     return (
         <div className='upload-popup' onDragOver={(event) => handleDragOver(event)} onDrop={(event) => handleDrop(event)}>
@@ -61,19 +56,18 @@ const FileInput: React.FC<MyComponentProps> = (props: MyComponentProps) => {
                 style={{ display: 'none' }}
                 onChange={handleFileInputChange}
             />
+            {props.stage==0&& <div className='upload-image'>
+                    <IoImagesOutline className="drag-images" />
+                    <span style={{ fontSize: "18px", fontWeight: "500", padding: "5px 0px 20px 0px" }}>Drag photos and videos here</span>
+                <button className='upload-button' onClick={handleClick}>Select from computer</button>
+                </div>
+            }
             {props.stage == 1 &&
                 needsCrop &&
                 <> <ImageCropper image={imageSrc!} setImage={setCroppedImage} />
-                <button style={{ position: "absolute", bottom: "20px", right: "45%", backgroundColor:"rgb(1, 149, 247)",zIndex:"100"}} onClick={() => { setNeedsCrop(false); props.setStage(2) }}>Done</button>
+                    <button style={{ position: "absolute", bottom: "20px", right: "45%", backgroundColor: "rgb(1, 149, 247)", zIndex: "100" }} onClick={() => { setNeedsCrop(false); props.setStage(2) }}>Done</button>
                 </>
             }
-               {props.stage==0&& <div className='upload-image'>
-                    <IoImagesOutline className="drag-images" />
-                    <span style={{ fontSize: "18px", fontWeight: "500", padding: "5px 0px 20px 0px" }}>Drag photos and videos here</span>
-                    <button className='upload-button' onClick={handleClick}>Select from computer</button>
-                </div>
-            }
-      
         </div>
     );
 };

@@ -3,8 +3,21 @@
     display: flex;
     top: 20px;
     left: 20px;
+    /* overflow: hidden;
+    border-radius: 50%;
+    align-content: space-around;
+    width: 30px;
+    aspect-ratio: 1;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch; */
+}
+
+.photo-overlay {
+    width: 40px;
     overflow: hidden;
     border-radius: 50%;
+    display: flex;
     align-content: space-around;
     width: 30px;
     aspect-ratio: 1;
@@ -12,6 +25,41 @@
     justify-content: center;
     align-items: stretch;
 }
-.profile-photo{
-    width: 40px;
+
+.profile-photo {
+    width: 45px;
+}
+
+.logoutButton {
+    margin: 15px;
+}
+
+.edit-icon {
+    position: absolute;
+    top: 85px;
+    right: 100px;
+    font-size: 30px;
+}
+
+.profile-corner {
+    position: fixed;
+    display: flex;
+    top: 20px;
+    left: 20px;
+    gap: 20px;
+    align-content: center;
+    width: 300px;
+    height: 500px;
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 5px;
+    background-color: rgb(10, 10, 10);
+}
+
+.overlay {
+    height: 100vh;
+    width: 100vw;
+    background-color: rgb(72, 69, 69, 0.4);
 }

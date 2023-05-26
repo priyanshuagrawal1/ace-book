@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Input from '../components/input';
 import './login.css';
 import { Snackbar } from '@mui/material';
-import { signInWithEmailAndPassword, onAuthStateChanged, } from 'firebase/auth';
+import { signInWithEmailAndPassword, } from 'firebase/auth';
 import { auth, } from '../services/firebase';
 import Checkbox from '../components/checkbox';
 import Right from './right';
@@ -26,9 +26,6 @@ export const Login: React.FC = () => {
     const [open, setOpen] = useState(false);
     const [errorMessages, setErrorMessages] = useState('');
     const [formErrors, setFormErrors] = useState<Record<string, string>>({});
-    const [rememberMe, setRememberMe] = useState(false);
-    const [user, setUser] = useState<any>(null); // Replace 'any' with the appropriate user type
-    console.log(user, rememberMe)
     async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
         if (!validateForm(formValues)) {
@@ -86,16 +83,6 @@ export const Login: React.FC = () => {
         return true;
     }
 
-    useEffect(() => {
-        onAuthStateChanged(auth, (currentUser) => {
-            if (currentUser) {
-                // window.location.href = "/welcome";
-            }
-            setUser(currentUser);
-        });
-        return ()=>{}
-    }, [])
-
     function handleChange(name: string, value: string) {
         setFormValues({
             ...formValues,
@@ -142,7 +129,7 @@ export const Login: React.FC = () => {
                         <Snackbar open={open} autoHideDuration={6000} onClose={() => setOpen(false)} message={errorMessages} />
                         <div className="line"></div>
                         <div className="Loginfields" style={{ margin: '20px 0px' }}>
-                            <Checkbox label="Remember me" onChange={setRememberMe} />
+                            <Checkbox label="Remember me" onChange={()=>{}} />
                             <button className="login__button" style={{ position: 'absolute', right: '0px' }}>
                                 Log in
                             </button>

@@ -52,18 +52,20 @@ const MenuButton = () => {
             })
         const storageRef = ref(storage, `images/${postId}`);
 
-        // 'file' comes from the Blob or File API
-        await setDoc(doc(db, "posts", postId), {
-            description: postDescription,
-            userId: auth.currentUser?.uid
-        });
-        uploadBytes(storageRef, file!).then((_) => {
+
+       await uploadBytes(storageRef, file!).then((_) => {
             console.log('Uploaded a blob or file!');
-            setIsLoading(false)
             setSnackbarOpen(true);
             setPostDescription("");
             setImageSrc("");
         });
+        await setDoc(doc(db, "posts", postId), {
+            description: postDescription,
+            userId: auth.currentUser?.uid,
+            likes:0
+        });
+        setIsLoading(false)
+
     }
     const popupRef = useRef(null);
     const handleSnackbarClose = () => {
@@ -75,7 +77,7 @@ const MenuButton = () => {
         }
     };
     return (
-        <div >
+        <div>
             <Snackbar
                 open={snackbarOpen}
                 autoHideDuration={3000} // Adjust the duration as needed
