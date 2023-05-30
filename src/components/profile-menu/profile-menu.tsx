@@ -7,6 +7,7 @@ import { doc, getDoc, updateDoc } from "@firebase/firestore";
 import { FaRegEdit } from "react-icons/fa";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { Snackbar } from '@mui/material';
+import { Link } from "react-router-dom";
 
 async function logout() {
   await signOut(auth);
@@ -34,7 +35,7 @@ interface User {
   name: string;
   imgUrl?: string;
 }
-export default function ProfileMenu(_: any) {
+export default function ProfileMenu(props: any) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [user, setUser] = useState<User | null>(null)
   const [snackbarOpen, setSnackbarOpen] = useState<boolean>(false);
@@ -122,7 +123,9 @@ export default function ProfileMenu(_: any) {
             <input ref={editProfileRef} type="file" accept=".jpg, .jpeg, .png" style={{ display: "none" }} onChange={uploadFile} />
             <FaRegEdit className="edit-icon" onClick={handleEditClick} />
           </div>
-          <span>hello {auth.currentUser?.displayName??"unknown user"}</span>
+          <span>hello {auth.currentUser?.displayName ?? "unknown user"}</span>
+          <button onClick={() => props.setPostsType("all")}> All</button>
+          <button onClick={() => props.setPostsType("liked")}> Liked</button>
           <button onClick={logout} className="logoutButton"> Logout</button>
         </div>
       </div>}

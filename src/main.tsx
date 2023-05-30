@@ -4,6 +4,10 @@ import App from './pages/App.tsx'
 import './index.css'
 import { BrowserRouter } from 'react-router-dom'
 
+import * as themes from './themes/schema.json';
+import { setToLS } from './utils/storage';
+setToLS('all-themes', JSON.stringify(themes));
+
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <BrowserRouter>

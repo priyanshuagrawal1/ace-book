@@ -8,7 +8,9 @@
     padding: 6px 12px;
     border-radius: 5px;
     display: flex;
+    background-color: #383838;
     align-items: end;
+    color:rgb(255, 255, 255)
 }
 .input::placeholder {
     /* Chrome, Firefox, Opera, Safari 10.1+ */

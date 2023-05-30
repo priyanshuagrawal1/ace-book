@@ -4,7 +4,8 @@ import { HiPlus } from "react-icons/hi"
 import { auth, db, storage } from '../../services/firebase';
 import { ref, uploadBytes } from "firebase/storage";
 import { v4 as uuidv4 } from 'uuid';
-import { doc, setDoc } from "firebase/firestore";
+import { FieldValue, doc, setDoc } from "firebase/firestore";
+
 import { Snackbar } from '@mui/material';
 
 import FileInput from '../file-input';
@@ -17,7 +18,7 @@ const MenuButton = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [snackbarOpen, setSnackbarOpen] = useState(false);
 
-    const toggleMenu = () => { 
+    const toggleMenu = () => {
         setIsOpen(!isOpen);
     };
     const handleBack = () => {
@@ -52,18 +53,22 @@ const MenuButton = () => {
             })
         const storageRef = ref(storage, `images/${postId}`);
 
-
-       await uploadBytes(storageRef, file!).then((_) => {
+        await uploadBytes(storageRef, file!).then((_) => {
             console.log('Uploaded a blob or file!');
             setSnackbarOpen(true);
             setPostDescription("");
             setImageSrc("");
         });
+
         await setDoc(doc(db, "posts", postId), {
             description: postDescription,
             userId: auth.currentUser?.uid,
-            likes:0
+            likes: 0,
+            createdAt: new Date().toISOString()
         });
+        await setDoc(doc(db, "likes", postId), {
+            postId:postId
+        })
         setIsLoading(false)
 
     }

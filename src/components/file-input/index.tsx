@@ -14,6 +14,7 @@ const FileInput: React.FC<MyComponentProps> = (props: MyComponentProps) => {
     const [croppedImage, setCroppedImage] = useState<string>("");
     const [needsCrop, setNeedsCrop] = useState<boolean>(true);
     const readFile = (file: File) => {
+        setNeedsCrop(true);
         const reader = new FileReader();
         reader.onload = () => {
             if (typeof reader.result === 'string') {
@@ -25,6 +26,7 @@ const FileInput: React.FC<MyComponentProps> = (props: MyComponentProps) => {
         props.setStage(1)
     }
     const handleFileInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+        event.preventDefault();
         const file = event.target.files && event.target.files[0];
         if (file) {
             readFile(file)
@@ -39,7 +41,6 @@ const FileInput: React.FC<MyComponentProps> = (props: MyComponentProps) => {
 
     function handleDrop(event: any) {
         event.preventDefault();
-        setNeedsCrop(true);
         const file = event.dataTransfer.files[0];
             if (file) {
                 readFile(file)

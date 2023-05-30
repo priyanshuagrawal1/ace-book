@@ -3,36 +3,52 @@ import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 import { FaRegComment } from "react-icons/fa"
 import { IoPaperPlaneOutline } from "react-icons/io5";
 import { MdBookmarkBorder, MdBookmark } from "react-icons/md"
-import { useState } from "react";
+import {  useState } from "react";
 import { Post } from "../../pages/feedPage";
-import { db } from "../../services/firebase";
-import { doc, getDoc, updateDoc } from "firebase/firestore";
+import {  auth, db } from "../../services/firebase";
+import { doc, getDoc, updateDoc, arrayUnion, arrayRemove, setDoc } from "firebase/firestore";
 interface PostProps {
     post: Post
 }
 
 export default function Post(props: PostProps) {
-    const [isLiked, setIsLiked] = useState(false);
+    const [isLiked, setIsLiked] = useState(props.post.likedByUser);
     const [isSaved, setIsSaved] = useState(false);
     const [post, setPost] = useState<Post>(props.post)
     const [comment, setComment] = useState('');
     const handleLikeClick = async () => {
         const postDocRef = doc(db, "posts", post.id!)
+        const likeDocRef = doc(db, "likes", post.id!);
+        const userDocRef = doc(db,"users",auth.currentUser!.uid)
         const postDoc = await getDoc(postDocRef)
 
         if (!isLiked) {
-            updateDoc(postDocRef, {
-                likes: postDoc.data()!.likes + 1
-            })
             setPost(prev => {
                 return { ...prev, likes: prev.likes! + 1 }
             })
-        } else {
             updateDoc(postDocRef, {
-                likes: postDoc.data()!.likes - 1
+                likes: postDoc.data()!.likes + 1,
             })
+            updateDoc(likeDocRef, {
+                postId: post.id,
+                likedBy: arrayUnion(auth.currentUser?.uid)
+            })
+            updateDoc(userDocRef, {
+                likes: arrayUnion(post.id)
+            })
+
+        } else {
             setPost(prev => {
                 return { ...prev, likes: prev.likes! - 1 }
+            })
+            updateDoc(postDocRef, {
+                likes: postDoc.data()!.likes - 1,
+            })
+            updateDoc(likeDocRef, {
+                likedBy: arrayRemove(auth.currentUser?.uid)
+            })
+            updateDoc(userDocRef, {
+                likes: arrayRemove(post.id)
             })
         }
 
